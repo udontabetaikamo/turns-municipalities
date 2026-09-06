@@ -136,9 +136,9 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   <div class="sum-row"><div class="sum-k"><a href="#s2">2 / 前提</a></div><div class="sum-v">TURNSは移住専門の季刊誌だが、自治体にタイアップ記事や協力隊募集支援も売っている。<em>「載る」＝「編集部が選んだ」とは限らない。</em></div></div>
   <div class="sum-row"><div class="sum-k"><a href="#s3">3 / 方法</a></div><div class="sum-v">23号の目次から掲載201自治体を抽出し、全国1,741市区町村と公的統計9本で照合した。<em>母集団の掲載率は11.5%。以降の数字はすべてこれと比べる。</em></div></div>
   <div class="sum-row"><div class="sum-k"><a href="#s4">4 / 分布</a></div><div class="sum-v">201自治体のうち166件（83%）は1回きり。4回が3件、3回が5件。<em>常連は秋田市、十日町市、大熊町など8自治体。</em></div></div>
-  <div class="sum-row"><div class="sum-k"><a href="#s5">5 / 結果</a></div><div class="sum-v">人口が増えている自治体は8.8%で平均以下、起業の多さでは差が出ない。協力隊は5.7%から26.6%へ単調に上がる。<em>成果では分かれず、政策の運用量で分かれる。</em></div></div>
-  <div class="sum-row"><div class="sum-k"><a href="#s6">6 / 多変量</a></div><div class="sum-v">9指標を同時に入れると、関連が残るのは人口規模と協力隊数だけ。<em>空き家率と過疎指定は、統制すると関連が消える。</em></div></div>
-  <div class="sum-row"><div class="sum-k"><a href="#s7">7 / 検証</a></div><div class="sum-v">協力隊の効果はPR表記のない特集枠にも残るが、PR枠のほうが強い。<em>編集記事は財政力が低い自治体、PR枠は高い自治体を選ぶ。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s5">5 / 結果</a></div><div class="sum-v">載るのは「空き家と過疎という課題が見え、協力隊という制度で外から人が入り、泊まれる場所があり、首都圏から日帰りできない距離にある」自治体。<em>一方、人口が増えている自治体は8.8%で平均以下。起業の多さでも差は出ない。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s6">6 / 多変量</a></div><div class="sum-v">5章の4条件のうち、空き家率と過疎指定は見かけの関連だった。9指標を同時に入れて残るのは人口規模と協力隊数の2つ。<em>空き家が多い自治体が協力隊を多く入れており、載るのはその経路をたどっている。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s7">7 / 検証</a></div><div class="sum-v">協力隊が多い自治体ほど載るという関係は、PR表記のない特集枠にも見られる。PR枠ではより強い。<em>編集記事は財政力が低い自治体、PR枠は高い自治体が載る。発注には予算が要る。</em></div></div>
   <div class="sum-row"><div class="sum-k"><a href="#s8">8 / 考察</a></div><div class="sum-v">中核は過疎指定を受けた人口3〜10万人の地方都市。全体の43%を占める。<em>大都市、小町村、復興地、首都圏近郊はそれぞれ別の役割。</em></div></div>
   <div class="sum-row"><div class="sum-k"><a href="#s9">9 / 反論</a></div><div class="sum-v">第三の要因、記事にしやすさ、時間の前後関係。3つとも否定できていない。<em>何が観測されればこの読みが崩れるかを明示した。</em></div></div>
   <div class="sum-row"><div class="sum-k"><a href="#s10">10 / 限界</a></div><div class="sum-v">原因と結果の順序は判定できず、「移住の成果」の代理指標も粗い。<em>分析対象は移住政策ではなく、メディアの選択過程。</em></div></div>
@@ -345,7 +345,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
 <h2 id="s7"><span class="num">7 / 検証</span>広告で載っているのではないか</h2>
 <p>TURNSは自治体にタイアップ記事を売っています。目次を見ると、掲載は「特集」枠と、「地域ルポ」「体験ツアーレポート」「協力隊レポート」などの<strong>受託事業の報告枠</strong>に分かれます。<strong>PRにあたるのは後者</strong>で、公式サイトでもこの種の記事にPRタグが付いています。掲載201自治体のうち特集枠だけが150件、報告枠に出るのが50件です。</p>
-<p>協力隊の効果が広告だけの産物かを見るため、枠ごとに別々の回帰を行いました。</p>
+<p>協力隊との関係が広告枠だけのものかを見るため、枠ごとに別々の回帰を行いました。</p>
 
 <div class="tbl"><table>
 <thead><tr><th>変数（オッズ比）</th><th class="n">特集枠<br>編集記事・147件</th><th class="n">報告枠<br>実質PR・50件</th></tr></thead>
@@ -359,7 +359,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 <p class="cap">n=1,703。*** p&lt;0.001、** p&lt;0.01、* p&lt;0.05。オッズ比は1標準偏差あたり（過疎指定のみ有無）。掲載率どうしの比は基準率の差で膨らむため使わず、効きの強さはオッズ比で比べています。</p>
 
 <div class="note"><span class="lbl">判定</span>
-  <p><strong>広告だけの産物ではありません。</strong>協力隊の効果はPR表記のない特集枠にも残ります（1.65、p&lt;0.001）。ただしPR枠のほうが明確に強く（3.05）、この差は統計的に区別できます（p=0.003）。広告が傾向を増幅しています。</p>
+  <p><strong>広告枠だけの現象ではありません。</strong>協力隊が多い自治体ほど載るという関係は、PR表記のない特集枠にも残ります（1.65、p&lt;0.001）。ただしPR枠のほうが明確に強く（3.05）、この差は統計的に区別できます（p=0.003）。広告が傾向を増幅しています。</p>
   <p><strong>2つの枠は選ぶ基準が違いました。</strong>編集記事で最も効くのは人口規模で、記事が成立する規模の自治体が選ばれます。PR枠では人口規模が効かず、協力隊数が突出します。決定的なのは財政力の逆転で、<strong>編集記事は財政力が低い自治体ほど載り、PR枠は高い自治体ほど載ります</strong>。発注には予算が要るということです。</p>
 </div>
 
