@@ -1,0 +1,192 @@
+<title>TURNSに載る自治体</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+:root{
+  --paper:#f7f6f2; --ink:#1f2328; --ink-2:#4a5058; --ink-3:#7a8088;
+  --rule:#d9d7d0; --accent:#1f4e5f; --accent-soft:#e3ecee; --warn:#a8412b; --warn-soft:#f5e6e1;
+  --table-head:#ecebe6; --table-zebra:#f1f0ec;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#15181c; --ink:#e8e6e0; --ink-2:#b8b5ac; --ink-3:#858a92;
+    --rule:#33383f; --accent:#8fc1cf; --accent-soft:#1d2f36; --warn:#e0846d; --warn-soft:#3a2420;
+    --table-head:#20252b; --table-zebra:#1a1e23;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15181c; --ink:#e8e6e0; --ink-2:#b8b5ac; --ink-3:#858a92;
+  --rule:#33383f; --accent:#8fc1cf; --accent-soft:#1d2f36; --warn:#e0846d; --warn-soft:#3a2420;
+  --table-head:#20252b; --table-zebra:#1a1e23;
+}
+body{background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Sans",sans-serif;font-size:15.5px;line-height:1.85;font-feature-settings:"palt";}
+.page{max-width:760px;margin:0 auto;padding:48px 24px 96px;}
+header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px;}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px;}
+h1{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-weight:700;font-size:34px;line-height:1.35;margin:0 0 14px;text-wrap:balance;letter-spacing:.01em;}
+.lede{font-size:16.5px;color:var(--ink-2);margin:0;max-width:40em;}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:18px;font-size:13px;color:var(--ink-3);}
+h2{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-weight:700;font-size:23px;line-height:1.4;margin:56px 0 14px;padding-top:22px;border-top:1px solid var(--rule);text-wrap:balance;}
+h2 .num{font-family:"Noto Sans JP",sans-serif;font-size:12px;letter-spacing:.12em;color:var(--accent);display:block;margin-bottom:6px;font-weight:500;}
+h3{font-size:16.5px;font-weight:700;margin:28px 0 8px;}
+p{margin:0 0 14px;max-width:40em;}
+ul,ol{margin:0 0 16px;padding-left:1.4em;max-width:40em;}
+li{margin-bottom:6px;}
+strong{font-weight:700;}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:14px 18px;margin:18px 0 22px;border-radius:0 4px 4px 0;}
+.note p{margin:0;}
+.twist{background:var(--warn-soft);border-left:3px solid var(--warn);padding:14px 18px;margin:18px 0 22px;border-radius:0 4px 4px 0;}
+.twist p{margin:0;}
+.twist .lbl,.note .lbl{display:block;font-size:11.5px;letter-spacing:.12em;margin-bottom:6px;color:var(--ink-3);}
+.twist .lbl{color:var(--warn);} .note .lbl{color:var(--accent);}
+.tbl{overflow-x:auto;margin:14px 0 8px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums;}
+th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top;}
+th{background:var(--table-head);font-weight:500;color:var(--ink-2);font-size:12.5px;letter-spacing:.02em;white-space:nowrap;}
+tbody tr:nth-child(even) td{background:var(--table-zebra);}
+td.n,th.n{text-align:right;white-space:nowrap;}
+td.hi{color:var(--accent);font-weight:700;}
+td.lo{color:var(--warn);font-weight:700;}
+.cap{font-size:12.5px;color:var(--ink-3);margin:4px 0 18px;line-height:1.6;}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:14px;margin:12px 0 18px;max-width:40em;}
+.kv dt{color:var(--ink-3);white-space:nowrap;} .kv dd{margin:0;}
+.thesis{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:19px;line-height:1.7;margin:22px 0;padding:0 0 0 18px;border-left:2px solid var(--ink);max-width:36em;}
+footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-3);line-height:1.7;}
+footer ul{padding-left:1.2em;margin:6px 0 0;}
+a{color:var(--accent);}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+@media (max-width:520px){h1{font-size:28px} body{font-size:15px}}
+</style>
+
+<div class="page">
+<header>
+  <p class="eyebrow">Research note · 2026-09-06</p>
+  <h1>移住雑誌「TURNS」に載る自治体は、どんな自治体か</h1>
+  <p class="lede">季刊誌TURNSの目次4年分から掲載自治体206件を抽出し、公的統計9本と突き合わせました。「盛り上がっている自治体が載る」という当初の予想は外れ、別の輪郭が見えました。</p>
+  <div class="meta"><span>対象: 2022年6月号〜2026年11月号（23号）</span><span>読者想定: 都市計画を学ぶ学生</span><span>作成: 川北大洋</span></div>
+</header>
+
+<h2><span class="num">1 / 動機</span>なぜ雑誌の目次を数えたのか</h2>
+<p>修士研究で墨田区の民泊集積地の防災対応を扱っていて、「制度の成功が別の空白を生む」という構図に関心があります。その延長で、移住や地方創生の文脈で繰り返し名前が挙がる自治体には何か共通項があるのか、それは統計で見えるのかを知りたくなりました。</p>
+<p>TURNSを選んだのは、移住関心層に最も読まれている雑誌の一つで、2012年の創刊以来ほぼ毎号「どこかの自治体で誰かが何かを始めた」記事を載せているからです。目次に自治体名が出るので、機械的に数えられます。</p>
+<p>最初の仮説は単純でした。<strong>「盛り上がっていて個人プレイヤーが集まる魅力のある自治体が載っているのだろう」</strong>。もしそうなら、掲載自治体は人口移動や起業の統計で他と区別できるはずです。</p>
+
+<h2><span class="num">2 / 前提</span>TURNSとはどんな媒体か</h2>
+<dl class="kv">
+  <dt>発行</dt><dd>第一プログレス（東京・有楽町）。2012年創刊、季刊、公称8万部</dd>
+  <dt>主題</dt><dd>移住・二拠点・地域での起業・地域おこし協力隊。毎号1つの特集（例: 事業承継、復興、一次産業、民間行政）</dd>
+  <dt>収益</dt><dd>雑誌販売のほか、自治体・企業向けに「広告、取材タイアップ記事」「ツアー・スクール運営」「協力隊募集支援」を販売している（公式サイトの広告掲載ページに明記）</dd>
+</dl>
+<div class="note"><span class="lbl">読む前に押さえる点</span><p>TURNSは自治体から仕事を受ける会社でもあります。「載っている」ことは「編集部が選んだ」とは限りません。この点は後半で検証します。</p></div>
+
+<h2><span class="num">3 / 方法</span>目次を取り、統計と結合する</h2>
+<ol>
+  <li>雑誌販売サイト（Fujisan）に各号の目次全文があるので、97号分を取得。目次全文が載っているのは2022年6月号以降なので、分析はその23号に限定。</li>
+  <li>目次の見出しから「都道府県名＋市区町村名」を正規表現で抽出。206件（重複除去後201自治体）。都道府県名を伴わない表記や「能登」「隠岐」のような地域名は拾えていない。</li>
+  <li>全国約1,740市区町村を母集団とし、公的統計9本を名寄せして結合。指標ごとに全国を5等分（五分位）し、各グループに掲載自治体が何％含まれるか（掲載率）を比較。全体の掲載率は約11%なので、それより高ければ「載りやすい」、低ければ「載りにくい」。</li>
+</ol>
+<div class="tbl"><table>
+<thead><tr><th>指標</th><th>出典・年次</th></tr></thead>
+<tbody>
+<tr><td>人口・人口密度・増減率</td><td>国勢調査 2020（2015比）</td></tr>
+<tr><td>空き家率</td><td>住宅・土地統計調査 2023。人口1.5万人未満の町村は対象外</td></tr>
+<tr><td>地域おこし協力隊 隊員数</td><td>総務省 2024年度 市町村別（PDFから抽出、復元率98%）</td></tr>
+<tr><td>過疎地域指定・財政力指数</td><td>総務省 決算状況調 2023年度、過疎地域市町村一覧</td></tr>
+<tr><td>ふるさと納税受入額</td><td>総務省 現況調査 2025年度</td></tr>
+<tr><td>転入超過（全年齢・20〜39歳）</td><td>住民基本台帳人口移動報告 2024</td></tr>
+<tr><td>新設法人数（2019〜24年）</td><td>国税庁 法人番号公表データ（全件、所在地別集計）</td></tr>
+<tr><td>宿泊・飲食業の集積</td><td>経済センサス活動調査 2021、人口あたり事業所数</td></tr>
+<tr><td>三大都市圏からの距離</td><td>市区町村代表点から東京・名古屋・大阪駅への直線距離</td></tr>
+</tbody></table></div>
+<p class="cap">結合率は指標により97〜100%。空き家率のみ調査対象外の小規模町村があり154件。名寄せで6件（合併で消滅した旧町村名など）を除外または広域自治体で代用。</p>
+
+<h2><span class="num">4 / 結果</span>掲載を分けた指標、分けなかった指標</h2>
+<div class="tbl"><table>
+<thead><tr><th>指標（低→高の五分位）</th><th class="n">Q1</th><th class="n">Q2</th><th class="n">Q3</th><th class="n">Q4</th><th class="n">Q5</th><th>読み</th></tr></thead>
+<tbody>
+<tr><td>協力隊 隊員数</td><td class="n lo">4.7%</td><td class="n">4.7%</td><td class="n">8.4%</td><td class="n">14.6%</td><td class="n hi">19.8%</td><td>単調に上昇。最も強い</td></tr>
+<tr><td>空き家率</td><td class="n lo">4.5%</td><td class="n">7.7%</td><td class="n">11.7%</td><td class="n">17.4%</td><td class="n hi">21.1%</td><td>単調に上昇</td></tr>
+<tr><td>ふるさと納税 受入額</td><td class="n lo">5.2%</td><td class="n">5.7%</td><td class="n">11.2%</td><td class="n">17.2%</td><td class="n hi">18.1%</td><td>上昇。人口規模を揃えると弱まる</td></tr>
+<tr><td>宿泊・飲食の集積</td><td class="n lo">2.4%</td><td class="n">7.4%</td><td class="n hi">15.3%</td><td class="n">14.8%</td><td class="n">11.6%</td><td>最下位層だけ極端に避けられる</td></tr>
+<tr><td>三大都市圏からの距離</td><td class="n lo">6.1%</td><td class="n">13.3%</td><td class="n hi">17.3%</td><td class="n">13.8%</td><td class="n">7.2%</td><td>山型。119〜259km帯が頂点</td></tr>
+<tr><td>財政力指数</td><td class="n">7.9%</td><td class="n">12.3%</td><td class="n hi">16.3%</td><td class="n">12.7%</td><td class="n">8.6%</td><td>山型。極端は避けられる</td></tr>
+<tr><td>人口密度</td><td class="n">7.8%</td><td class="n hi">15.9%</td><td class="n">13.8%</td><td class="n">9.7%</td><td class="n lo">3.9%</td><td>都市部が最低</td></tr>
+<tr><td>転入超過率</td><td class="n">9.2%</td><td class="n">12.6%</td><td class="n hi">15.5%</td><td class="n">7.9%</td><td class="n lo">7.0%</td><td><strong>人が増えている層が最低</strong></td></tr>
+<tr><td>新設法人数（人口あたり）</td><td class="n">11.8%</td><td class="n">12.7%</td><td class="n">10.7%</td><td class="n">11.5%</td><td class="n">12.6%</td><td><strong>完全にフラット</strong></td></tr>
+</tbody></table></div>
+<p class="cap">各セルは「その五分位に属する全国自治体のうち、TURNSに1回以上載った割合」。過疎地域指定は掲載群63.7%、非掲載群51.6%（χ²検定 p=0.002）。</p>
+
+<div class="twist"><span class="lbl">当初仮説の帰結</span><p>「個人が集まった結果」を測る指標、つまり転入超過と新設法人では差が出ませんでした。むしろ人口が増えている自治体ほど載りません。載っている自治体は「人が来ている自治体」ではなく、「空き家と過疎という課題が見え、協力隊という制度で外から人が入り、泊まれる場所があり、首都圏から日帰りできない距離にある」自治体でした。</p></div>
+
+<p>もう一つ重要な結果があります。<strong>何回載ったか（掲載回数）は、9指標のどれとも相関しません</strong>（順位相関はすべて0.11未満）。秋田市、十日町市、大熊町、薩摩川内市、萩市が繰り返し載る理由は、統計的性質では説明できません。</p>
+
+<h2><span class="num">5 / 検証</span>広告で載っているのではないか</h2>
+<p>協力隊数とふるさと納税額が効くという結果は、「外向きのPR予算がある自治体が載っている」とも読めます。前提で触れた通り、TURNSは取材タイアップ記事を販売しています。そこで目次の構造を確かめました。</p>
+<ul>
+  <li>目次は「特集」枠と、「地域ルポ」「体験ツアーレポート」「TURNS LOCAL COLLEGE レポート」「協力隊レポート」などの枠に分かれます。後者はTURNSが自治体から受託した事業の報告です。</li>
+  <li>公式サイトでは「地域ルポ」記事にPRタグが付いています（例: 新潟県三条市の地域ルポ）。PRタグの記事50件はすべて自治体の体験ツアー、移住相談会、協力隊募集、補助金告知でした。</li>
+</ul>
+<div class="tbl"><table>
+<thead><tr><th>枠</th><th class="n">自治体数</th><th>協力隊0人での掲載率</th><th>協力隊15人以上での掲載率</th></tr></thead>
+<tbody>
+<tr><td>特集枠のみに登場</td><td class="n">155</td><td>4.7%</td><td>16.5%（3.5倍）</td></tr>
+<tr><td>受託事業の報告枠に登場</td><td class="n">51</td><td>1.0%</td><td>10.1%（10倍）</td></tr>
+</tbody></table></div>
+<p class="cap">複数回掲載の上位8自治体のうち、丹波山村は3回すべて、大熊町は4回中3回、津山市・十日町市は過半が報告枠。</p>
+<p><strong>判定。</strong>掲載自治体の約4分の1と、繰り返し載る自治体の大半は、自治体がTURNSに仕事を出した結果として載っています。ただし報告枠を除いた特集枠だけでも協力隊数の傾きは残ります（3.5倍）。「全部広告」ではありません。特集記事の主人公は移住者個人で、その多くが協力隊経由で入ってきた人、というのが最も素直な読みです。特集枠にタイアップが混ざっているかは目次では判別できず、誌面のPR表記を実物で数える必要があります。</p>
+
+<div class="note"><span class="lbl">寄り道: なぜ協力隊が効くのか</span><p>協力隊は隊員1人あたり年520万円まで国が特別交付税で措置し、募集経費も年350万円まで措置されます。自治体の持ち出しはほぼゼロで、国の目標は「2026年度に隊員1万人」という頭数です。定住率（任期終了者の70.3%、県によっては55%）には目標がなく、市町村別の値は公表されていません。募集広告と隊員の物語が同じ媒体に載るのは、同じ予算枠から同じ業者に流れているためです。</p></div>
+
+<h2><span class="num">6 / 考察</span>掲載自治体の5つの型</h2>
+<p>201自治体を人口規模、過疎指定、都市圏からの距離で分けると、次の5型になります。</p>
+<div class="tbl"><table>
+<thead><tr><th>型</th><th class="n">件数</th><th class="n">人口中央値</th><th class="n">協力隊</th><th class="n">空き家率</th><th class="n">距離</th><th>例</th></tr></thead>
+<tbody>
+<tr><td><strong>過疎指定の地方都市・町</strong></td><td class="n">87</td><td class="n">4.5万</td><td class="n">7人</td><td class="n">19%</td><td class="n">222km</td><td>萩市、十日町市、津山市、田辺市、薩摩川内市</td></tr>
+<tr><td>過疎の小町村（1万人未満）</td><td class="n">32</td><td class="n">0.5万</td><td class="n">6人</td><td class="n">—</td><td class="n">255km</td><td>丹波山村、安平町、飯舘村、上士幌町</td></tr>
+<tr><td>非過疎の地方都市</td><td class="n">32</td><td class="n">3.4万</td><td class="n">5人</td><td class="n">17%</td><td class="n">227km</td><td>大熊町、南相馬市、東川町、別府市</td></tr>
+<tr><td>大都市・県庁所在地級</td><td class="n">29</td><td class="n">39万</td><td class="n">2人</td><td class="n">14%</td><td class="n">152km</td><td>秋田市、大分市、長崎市、鹿児島市</td></tr>
+<tr><td>都市圏100km圏の非過疎</td><td class="n">21</td><td class="n">7.3万</td><td class="n">3人</td><td class="n">14%</td><td class="n">71km</td><td>飯能市、青梅市、秩父市、三島市</td></tr>
+</tbody></table></div>
+<p class="cap">距離は三大都市圏の駅への直線距離の中央値。空き家率は住宅・土地統計調査の対象自治体のみ。</p>
+
+<h3>中核像</h3>
+<p><strong>過疎指定を受けた人口3〜10万人の地方都市</strong>が全体の43%を占め、複数回掲載の半分以上もここです。首都圏から200km前後、協力隊を数人抱え、空き家率2割、人口は年0.5%減。都市部の読者が「行っても暮らせる」と思える最小の都市規模で、かつ「課題があるから自分の出番がある」と感じられる場所です。</p>
+
+<h3>周辺の4型</h3>
+<ul>
+  <li><strong>大都市</strong>は東京・大阪圏には無く、150km以上離れた地方中枢だけ。主役は移住者が起こした会社で、自治体ではありません。</li>
+  <li><strong>首都圏100km圏</strong>は課題型ではなく、二拠点・週末移住の入口枠。空き家率も転入超過も全国並みです。</li>
+  <li><strong>小町村</strong>は象徴として繰り返し出ます。人口あたり協力隊は全国最上位。ここだけは「盛り上がっているから載る」が成り立ちますが、丹波山村の3回はすべて受託事業の報告で、盛り上がりと営業を分離できません。</li>
+  <li><strong>復興地</strong>（大熊町、南相馬市、飯舘村）は統計上どの型とも似ておらず、「ゼロからのまちづくり」という物語性で選ばれています。</li>
+</ul>
+
+<h3>載らない側から見る</h3>
+<ul>
+  <li>協力隊ゼロの自治体（全国618件）の掲載率は5%。課題があっても、制度に乗っていない自治体は載りません。</li>
+  <li>転入超過が最も大きい層は7%で最低。人が増えている場所は、移住の物語になりません。</li>
+  <li>宿泊・飲食が最も少ない層は2.4%。取材する側にも読者にも、行き場がありません。</li>
+</ul>
+
+<p class="thesis">TURNSに載るのは、盛り上がっている場所ではなく、盛り上げる余地と受け皿がある場所です。衰退しているが都市機能はまだあり、外の人間が入る制度と泊まれる場所があり、首都圏から日帰りできない距離にある地方都市。そして自治体がTURNSと取引関係にあるほど、繰り返し載ります。</p>
+
+<h2><span class="num">7 / 限界</span>この分析で言えないこと</h2>
+<ul>
+  <li>目次の見出しに都道府県名付きで出た自治体だけを数えています。本文中の登場や地域名表記は漏れています。</li>
+  <li>相関のみで、多変量の切り分けはしていません。協力隊数・空き家率・過疎指定は互いに相関するので、どれが独立に効くかは未確定です。</li>
+  <li>特集枠の記事が編集記事かタイアップかは目次から判別できません。</li>
+  <li>人口は2020年、他の指標は2021〜2025年で、年次がずれています。</li>
+  <li>「魅力」そのものは観測できません。取れるのは結果の痕跡だけで、掲載自体が痕跡の一部でもあります。</li>
+</ul>
+<p>次にやるなら、直近2〜3号の誌面で記事ごとにPR表記を確認して編集記事だけで再集計すること、そして協力隊数・空き家率・過疎指定・人口・距離を同時に入れた回帰で独立効果を見ることです。</p>
+
+<footer>
+  主な出典
+  <ul>
+    <li>Fujisan.co.jp TURNSバックナンバー（各号目次）／ turns.jp 広告掲載ページ、tag/pr 一覧</li>
+    <li>総務省: 令和6年度 地域おこし協力隊の隊員数等、令和7年度 定住状況等調査、市町村別決算状況調、ふるさと納税現況調査</li>
+    <li>総務省統計局: 国勢調査2020、住宅・土地統計調査2023、住民基本台帳人口移動報告2024、経済センサス活動調査2021</li>
+    <li>国税庁 法人番号公表サイト 全件データ</li>
+  </ul>
+  データ取得と結合は公開データのダウンロードとスクリプトで行い、指標ごとの詳細レポートは別途保管しています。
+</footer>
+</div>
