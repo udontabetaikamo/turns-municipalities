@@ -4,22 +4,22 @@
 :root{
   --paper:#f7f6f2; --ink:#1f2328; --ink-2:#4a5058; --ink-3:#7a8088;
   --rule:#d9d7d0; --accent:#1f4e5f; --accent-soft:#e3ecee; --warn:#a8412b; --warn-soft:#f5e6e1;
-  --table-head:#ecebe6; --table-zebra:#f1f0ec;
+  --table-head:#ecebe6; --table-zebra:#f1f0ec; --bar:#9dbcc6; --bar-hi:#1f4e5f; --bar-track:#e4e2dc;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --paper:#15181c; --ink:#e8e6e0; --ink-2:#b8b5ac; --ink-3:#858a92;
     --rule:#33383f; --accent:#8fc1cf; --accent-soft:#1d2f36; --warn:#e0846d; --warn-soft:#3a2420;
-    --table-head:#20252b; --table-zebra:#1a1e23;
+    --table-head:#20252b; --table-zebra:#1a1e23; --bar:#3d5f6b; --bar-hi:#8fc1cf; --bar-track:#262b31;
   }
 }
 :root[data-theme="dark"]{
   --paper:#15181c; --ink:#e8e6e0; --ink-2:#b8b5ac; --ink-3:#858a92;
   --rule:#33383f; --accent:#8fc1cf; --accent-soft:#1d2f36; --warn:#e0846d; --warn-soft:#3a2420;
-  --table-head:#20252b; --table-zebra:#1a1e23;
+  --table-head:#20252b; --table-zebra:#1a1e23; --bar:#3d5f6b; --bar-hi:#8fc1cf; --bar-track:#262b31;
 }
 body{background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Sans",sans-serif;font-size:15.5px;line-height:1.85;font-feature-settings:"palt";}
-.page{max-width:760px;margin:0 auto;padding:48px 24px 96px;}
+.page{max-width:780px;margin:0 auto;padding:48px 24px 96px;}
 header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px;}
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px;}
 h1{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-weight:700;font-size:34px;line-height:1.35;margin:0 0 14px;text-wrap:balance;letter-spacing:.01em;}
@@ -33,23 +33,42 @@ ul,ol{margin:0 0 16px;padding-left:1.4em;max-width:40em;}
 li{margin-bottom:6px;}
 strong{font-weight:700;}
 .note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:14px 18px;margin:18px 0 22px;border-radius:0 4px 4px 0;}
-.note p{margin:0;}
 .twist{background:var(--warn-soft);border-left:3px solid var(--warn);padding:14px 18px;margin:18px 0 22px;border-radius:0 4px 4px 0;}
-.twist p{margin:0;}
-.twist .lbl,.note .lbl{display:block;font-size:11.5px;letter-spacing:.12em;margin-bottom:6px;color:var(--ink-3);}
+.note p,.twist p{margin:0 0 8px;} .note p:last-child,.twist p:last-child{margin:0;}
+.twist .lbl,.note .lbl{display:block;font-size:11.5px;letter-spacing:.12em;margin-bottom:6px;}
 .twist .lbl{color:var(--warn);} .note .lbl{color:var(--accent);}
 .tbl{overflow-x:auto;margin:14px 0 8px;}
 table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums;}
 th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top;}
-th{background:var(--table-head);font-weight:500;color:var(--ink-2);font-size:12.5px;letter-spacing:.02em;white-space:nowrap;}
+th{background:var(--table-head);font-weight:500;color:var(--ink-2);font-size:12.5px;letter-spacing:.02em;}
 tbody tr:nth-child(even) td{background:var(--table-zebra);}
 td.n,th.n{text-align:right;white-space:nowrap;}
 td.hi{color:var(--accent);font-weight:700;}
 td.lo{color:var(--warn);font-weight:700;}
-.cap{font-size:12.5px;color:var(--ink-3);margin:4px 0 18px;line-height:1.6;}
+.cap{font-size:12.5px;color:var(--ink-3);margin:4px 0 18px;line-height:1.6;max-width:44em;}
+
+/* 五分位チャート */
+.q{margin:10px 0 26px;}
+.q-head{display:grid;grid-template-columns:13.5em 1fr;gap:14px;align-items:end;font-size:12px;color:var(--ink-3);margin-bottom:8px;}
+.q-scale{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;text-align:center;}
+.q-row{display:grid;grid-template-columns:13.5em 1fr;gap:14px;align-items:center;padding:7px 0;border-top:1px solid var(--rule);}
+.q-name{font-size:13.5px;line-height:1.45;}
+.q-name small{display:block;color:var(--ink-3);font-size:11.5px;}
+.q-cells{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;}
+.q-cell{background:var(--bar-track);border-radius:2px;padding:3px 0 4px;text-align:center;position:relative;overflow:hidden;}
+.q-fill{position:absolute;left:0;bottom:0;top:0;background:var(--bar);}
+.q-cell.max .q-fill{background:var(--bar-hi);}
+.q-val{position:relative;font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink);}
+.q-cell.max .q-val{font-weight:700;}
+.q-legend{font-size:12.5px;color:var(--ink-3);margin-top:10px;}
+@media (max-width:640px){
+  .q-head,.q-row{grid-template-columns:1fr;gap:4px;}
+  .q-row{padding:10px 0;}
+}
+.thesis{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:19px;line-height:1.7;margin:22px 0;padding:0 0 0 18px;border-left:2px solid var(--ink);max-width:36em;}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:14px;margin:12px 0 18px;max-width:40em;}
 .kv dt{color:var(--ink-3);white-space:nowrap;} .kv dd{margin:0;}
-.thesis{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:19px;line-height:1.7;margin:22px 0;padding:0 0 0 18px;border-left:2px solid var(--ink);max-width:36em;}
+.inline-list{font-size:13.5px;color:var(--ink-2);line-height:1.9;}
 footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-3);line-height:1.7;}
 footer ul{padding-left:1.2em;margin:6px 0 0;}
 a{color:var(--accent);}
@@ -61,14 +80,14 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 <header>
   <p class="eyebrow">Research note · 2026-09-06</p>
   <h1>移住雑誌「TURNS」に載る自治体は、どんな自治体か</h1>
-  <p class="lede">季刊誌TURNSの目次4年分から掲載自治体206件を抽出し、公的統計9本と突き合わせました。「盛り上がっている自治体が載る」という当初の予想は外れ、別の輪郭が見えました。</p>
-  <div class="meta"><span>対象: 2022年6月号〜2026年11月号（23号）</span><span>読者想定: 都市計画を学ぶ学生</span><span>作成: 川北大洋</span></div>
+  <p class="lede">季刊誌TURNSの目次4年分から掲載自治体206件を抽出し、公的統計9本と突き合わせました。「盛り上がっている自治体が載る」という当初の予想は外れ、効いている変数は2つに絞られました。</p>
+  <div class="meta"><span>対象: 2022年6月号〜2026年11月号（23号）</span><span>作成: 川北大洋</span></div>
 </header>
 
 <h2><span class="num">1 / 動機</span>なぜ雑誌の目次を数えたのか</h2>
-<p>修士研究で墨田区の民泊集積地の防災対応を扱っていて、「制度の成功が別の空白を生む」という構図に関心があります。その延長で、移住や地方創生の文脈で繰り返し名前が挙がる自治体には何か共通項があるのか、それは統計で見えるのかを知りたくなりました。</p>
-<p>TURNSを選んだのは、移住関心層に最も読まれている雑誌の一つで、2012年の創刊以来ほぼ毎号「どこかの自治体で誰かが何かを始めた」記事を載せているからです。目次に自治体名が出るので、機械的に数えられます。</p>
-<p>最初の仮説は単純でした。<strong>「盛り上がっていて個人プレイヤーが集まる魅力のある自治体が載っているのだろう」</strong>。もしそうなら、掲載自治体は人口移動や起業の統計で他と区別できるはずです。</p>
+<p>TURNSを最初に読んだとき、<strong>地域おこし協力隊の文脈でよく耳にする市区町村が、そのまま誌面に並んでいる</strong>と強く感じました。海士町、西粟倉村、東川町、丹波山村。移住や地域づくりの話題で名前が出る自治体は、いつも同じ顔ぶれに見えます。</p>
+<p>その印象が本当なのか、それとも自分が同じ情報源ばかり見ているだけなのかを確かめたくなりました。もし本当に偏りがあるなら、それは何によって決まっているのか。人口か、空き家か、財政か、東京からの距離か。目次には自治体名が書かれているので、数えれば統計で扱えます。</p>
+<p>最初の仮説は単純でした。<strong>「盛り上がっていて、個人プレイヤーが集まる魅力のある自治体が載っているのだろう」</strong>。もしそうなら、掲載自治体は人口移動や起業の統計で他と区別できるはずです。</p>
 
 <h2><span class="num">2 / 前提</span>TURNSとはどんな媒体か</h2>
 <dl class="kv">
@@ -76,13 +95,13 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   <dt>主題</dt><dd>移住・二拠点・地域での起業・地域おこし協力隊。毎号1つの特集（例: 事業承継、復興、一次産業、民間行政）</dd>
   <dt>収益</dt><dd>雑誌販売のほか、自治体・企業向けに「広告、取材タイアップ記事」「ツアー・スクール運営」「協力隊募集支援」を販売している（公式サイトの広告掲載ページに明記）</dd>
 </dl>
-<div class="note"><span class="lbl">読む前に押さえる点</span><p>TURNSは自治体から仕事を受ける会社でもあります。「載っている」ことは「編集部が選んだ」とは限りません。この点は後半で検証します。</p></div>
+<div class="note"><span class="lbl">読む前に押さえる点</span><p>TURNSは自治体から仕事を受ける会社でもあります。「載っている」ことは「編集部が選んだ」とは限りません。この点は5節で検証します。</p></div>
 
 <h2><span class="num">3 / 方法</span>目次を取り、統計と結合する</h2>
 <ol>
-  <li>雑誌販売サイト（Fujisan）に各号の目次全文があるので、97号分を取得。目次全文が載っているのは2022年6月号以降なので、分析はその23号に限定。</li>
-  <li>目次の見出しから「都道府県名＋市区町村名」を正規表現で抽出。206件（重複除去後201自治体）。都道府県名を伴わない表記や「能登」「隠岐」のような地域名は拾えていない。</li>
-  <li>全国約1,740市区町村を母集団とし、公的統計9本を名寄せして結合。指標ごとに全国を5等分（五分位）し、各グループに掲載自治体が何％含まれるか（掲載率）を比較。全体の掲載率は約11%なので、それより高ければ「載りやすい」、低ければ「載りにくい」。</li>
+  <li>雑誌販売サイト（Fujisan）に各号の目次全文があるので、97号分を取得。目次全文が載るのは2022年6月号以降なので、分析はその23号に限定しました。</li>
+  <li>目次の見出しから「都道府県名＋市区町村名」を正規表現で抽出。206件（重複を除くと201自治体）。都道府県名を伴わない表記や「能登」「隠岐」のような地域名は拾えていません。</li>
+  <li>全国1,741市区町村を母集団として公的統計9本を結合し、掲載群と非掲載群を比較しました。</li>
 </ol>
 <div class="tbl"><table>
 <thead><tr><th>指標</th><th>出典・年次</th></tr></thead>
@@ -97,47 +116,168 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 <tr><td>宿泊・飲食業の集積</td><td>経済センサス活動調査 2021、人口あたり事業所数</td></tr>
 <tr><td>三大都市圏からの距離</td><td>市区町村代表点から東京・名古屋・大阪駅への直線距離</td></tr>
 </tbody></table></div>
-<p class="cap">結合率は指標により97〜100%。空き家率のみ調査対象外の小規模町村があり154件。名寄せで6件（合併で消滅した旧町村名など）を除外または広域自治体で代用。</p>
+<p class="cap">結合率は指標により97〜100%。空き家率のみ調査対象外の小規模町村があり1,059件。名寄せで合併により消滅した旧町村名など6件を除外または広域自治体で代用しています。</p>
 
-<h2><span class="num">4 / 結果</span>掲載を分けた指標、分けなかった指標</h2>
+<h2><span class="num">4 / 分布</span>どの自治体が何回載ったか</h2>
+<p>4年間23号で、201自治体が登場しました。<strong>そのうち166自治体（83%）は1回だけ</strong>で、繰り返し登場するのはごく少数です。</p>
 <div class="tbl"><table>
-<thead><tr><th>指標（低→高の五分位）</th><th class="n">Q1</th><th class="n">Q2</th><th class="n">Q3</th><th class="n">Q4</th><th class="n">Q5</th><th>読み</th></tr></thead>
+<thead><tr><th class="n">掲載号数</th><th class="n">自治体数</th><th>自治体名</th></tr></thead>
 <tbody>
-<tr><td>協力隊 隊員数</td><td class="n lo">4.7%</td><td class="n">4.7%</td><td class="n">8.4%</td><td class="n">14.6%</td><td class="n hi">19.8%</td><td>単調に上昇。最も強い</td></tr>
-<tr><td>空き家率</td><td class="n lo">4.5%</td><td class="n">7.7%</td><td class="n">11.7%</td><td class="n">17.4%</td><td class="n hi">21.1%</td><td>単調に上昇</td></tr>
-<tr><td>ふるさと納税 受入額</td><td class="n lo">5.2%</td><td class="n">5.7%</td><td class="n">11.2%</td><td class="n">17.2%</td><td class="n hi">18.1%</td><td>上昇。人口規模を揃えると弱まる</td></tr>
-<tr><td>宿泊・飲食の集積</td><td class="n lo">2.4%</td><td class="n">7.4%</td><td class="n hi">15.3%</td><td class="n">14.8%</td><td class="n">11.6%</td><td>最下位層だけ極端に避けられる</td></tr>
-<tr><td>三大都市圏からの距離</td><td class="n lo">6.1%</td><td class="n">13.3%</td><td class="n hi">17.3%</td><td class="n">13.8%</td><td class="n">7.2%</td><td>山型。119〜259km帯が頂点</td></tr>
-<tr><td>財政力指数</td><td class="n">7.9%</td><td class="n">12.3%</td><td class="n hi">16.3%</td><td class="n">12.7%</td><td class="n">8.6%</td><td>山型。極端は避けられる</td></tr>
-<tr><td>人口密度</td><td class="n">7.8%</td><td class="n hi">15.9%</td><td class="n">13.8%</td><td class="n">9.7%</td><td class="n lo">3.9%</td><td>都市部が最低</td></tr>
-<tr><td>転入超過率</td><td class="n">9.2%</td><td class="n">12.6%</td><td class="n hi">15.5%</td><td class="n">7.9%</td><td class="n lo">7.0%</td><td><strong>人が増えている層が最低</strong></td></tr>
-<tr><td>新設法人数（人口あたり）</td><td class="n">11.8%</td><td class="n">12.7%</td><td class="n">10.7%</td><td class="n">11.5%</td><td class="n">12.6%</td><td><strong>完全にフラット</strong></td></tr>
+<tr><td class="n"><strong>4回</strong></td><td class="n">3</td><td>秋田県秋田市、新潟県十日町市、福島県大熊町</td></tr>
+<tr><td class="n"><strong>3回</strong></td><td class="n">5</td><td>鹿児島県薩摩川内市、山口県萩市、福島県南相馬市、岡山県津山市、山梨県丹波山村</td></tr>
+<tr><td class="n">2回</td><td class="n">32</td><td class="inline-list">鹿屋市、富士吉田市、田辺市、秩父市、倉敷市、土佐市、三戸町、東松島市、飯能市、佐渡市、東川町、中土佐町、大野市、男鹿市、安平町、雲南市、桐生市、柏崎市、高浜町、長門市、別府市、日立市、大分市、飛騨市、泉佐野市、飯舘村、青梅市、鶴岡市、三島市、みどり市、長崎市、身延町</td></tr>
+<tr><td class="n">1回</td><td class="n">166</td><td>（略）</td></tr>
 </tbody></table></div>
-<p class="cap">各セルは「その五分位に属する全国自治体のうち、TURNSに1回以上載った割合」。過疎地域指定は掲載群63.7%、非掲載群51.6%（χ²検定 p=0.002）。</p>
+<p class="cap">同一号内で複数の記事に登場しても1回と数えています。全国1,741市区町村のうち、4年間で一度でも載ったのは201件（11.5%）です。</p>
+<p>この「常連」の顔ぶれが、冒頭の印象そのものでした。ここから先は、彼らが統計的に何によって選ばれているのかを見ます。</p>
 
-<div class="twist"><span class="lbl">当初仮説の帰結</span><p>「個人が集まった結果」を測る指標、つまり転入超過と新設法人では差が出ませんでした。むしろ人口が増えている自治体ほど載りません。載っている自治体は「人が来ている自治体」ではなく、「空き家と過疎という課題が見え、協力隊という制度で外から人が入り、泊まれる場所があり、首都圏から日帰りできない距離にある」自治体でした。</p></div>
+<h2><span class="num">5 / 結果</span>掲載を分けた指標、分けなかった指標</h2>
+<p>指標ごとに全国1,741自治体を値の小さい順に並べ、約348件ずつ5つのグループに分けます。そして各グループの中で、TURNSに載った自治体が何％を占めるかを比べます。</p>
+<div class="note"><span class="lbl">グラフの読み方</span>
+  <p>全国平均は11.5%です。バーがこれより長ければ「そのグループは載りやすい」、短ければ「載りにくい」ことを意味します。</p>
+  <p>例えば協力隊の行の右端は19.8%です。これは「全国で協力隊員が最も多い約348自治体のうち、19.8%にあたる69件がTURNSに載った」という意味になります。左端は4.7%なので、協力隊が最も少ないグループの4倍以上です。</p>
+</div>
 
-<p>もう一つ重要な結果があります。<strong>何回載ったか（掲載回数）は、9指標のどれとも相関しません</strong>（順位相関はすべて0.11未満）。秋田市、十日町市、大熊町、薩摩川内市、萩市が繰り返し載る理由は、統計的性質では説明できません。</p>
+<div class="q">
+  <div class="q-head">
+    <div>指標</div>
+    <div class="q-scale"><span>最小の20%</span><span>〜40%</span><span>中位</span><span>〜80%</span><span>最大の20%</span></div>
+  </div>
 
-<h2><span class="num">5 / 検証</span>広告で載っているのではないか</h2>
-<p>協力隊数とふるさと納税額が効くという結果は、「外向きのPR予算がある自治体が載っている」とも読めます。前提で触れた通り、TURNSは取材タイアップ記事を販売しています。そこで目次の構造を確かめました。</p>
+  <div class="q-row"><div class="q-name">地域おこし協力隊 隊員数<small>0人 → 15人以上</small></div>
+    <div class="q-cells">
+      <div class="q-cell"><div class="q-fill" style="width:22%"></div><span class="q-val">4.7%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:22%"></div><span class="q-val">4.7%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:40%"></div><span class="q-val">8.4%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:70%"></div><span class="q-val">14.6%</span></div>
+      <div class="q-cell max"><div class="q-fill" style="width:95%"></div><span class="q-val">19.8%</span></div>
+    </div></div>
+
+  <div class="q-row"><div class="q-name">空き家率<small>10%未満 → 19%以上</small></div>
+    <div class="q-cells">
+      <div class="q-cell"><div class="q-fill" style="width:21%"></div><span class="q-val">4.5%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:37%"></div><span class="q-val">7.7%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:56%"></div><span class="q-val">11.7%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:83%"></div><span class="q-val">17.4%</span></div>
+      <div class="q-cell max"><div class="q-fill" style="width:100%"></div><span class="q-val">21.1%</span></div>
+    </div></div>
+
+  <div class="q-row"><div class="q-name">ふるさと納税 受入額<small>少ない → 多い</small></div>
+    <div class="q-cells">
+      <div class="q-cell"><div class="q-fill" style="width:25%"></div><span class="q-val">5.2%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:27%"></div><span class="q-val">5.7%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:53%"></div><span class="q-val">11.2%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:82%"></div><span class="q-val">17.2%</span></div>
+      <div class="q-cell max"><div class="q-fill" style="width:86%"></div><span class="q-val">18.1%</span></div>
+    </div></div>
+
+  <div class="q-row"><div class="q-name">宿泊・飲食業の集積<small>人口あたり事業所数</small></div>
+    <div class="q-cells">
+      <div class="q-cell"><div class="q-fill" style="width:11%"></div><span class="q-val">2.4%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:35%"></div><span class="q-val">7.4%</span></div>
+      <div class="q-cell max"><div class="q-fill" style="width:73%"></div><span class="q-val">15.3%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:70%"></div><span class="q-val">14.8%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:55%"></div><span class="q-val">11.6%</span></div>
+    </div></div>
+
+  <div class="q-row"><div class="q-name">三大都市圏からの距離<small>近い → 遠い</small></div>
+    <div class="q-cells">
+      <div class="q-cell"><div class="q-fill" style="width:29%"></div><span class="q-val">6.1%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:63%"></div><span class="q-val">13.3%</span></div>
+      <div class="q-cell max"><div class="q-fill" style="width:82%"></div><span class="q-val">17.3%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:65%"></div><span class="q-val">13.8%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:34%"></div><span class="q-val">7.2%</span></div>
+    </div></div>
+
+  <div class="q-row"><div class="q-name">財政力指数<small>低い → 高い</small></div>
+    <div class="q-cells">
+      <div class="q-cell"><div class="q-fill" style="width:37%"></div><span class="q-val">7.9%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:58%"></div><span class="q-val">12.3%</span></div>
+      <div class="q-cell max"><div class="q-fill" style="width:77%"></div><span class="q-val">16.3%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:60%"></div><span class="q-val">12.7%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:41%"></div><span class="q-val">8.6%</span></div>
+    </div></div>
+
+  <div class="q-row"><div class="q-name">人口密度<small>低い → 高い</small></div>
+    <div class="q-cells">
+      <div class="q-cell"><div class="q-fill" style="width:37%"></div><span class="q-val">7.8%</span></div>
+      <div class="q-cell max"><div class="q-fill" style="width:75%"></div><span class="q-val">15.9%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:65%"></div><span class="q-val">13.8%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:46%"></div><span class="q-val">9.7%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:18%"></div><span class="q-val">3.9%</span></div>
+    </div></div>
+
+  <div class="q-row"><div class="q-name">転入超過率<small>転出が多い → 転入が多い</small></div>
+    <div class="q-cells">
+      <div class="q-cell"><div class="q-fill" style="width:44%"></div><span class="q-val">9.2%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:60%"></div><span class="q-val">12.6%</span></div>
+      <div class="q-cell max"><div class="q-fill" style="width:73%"></div><span class="q-val">15.5%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:37%"></div><span class="q-val">7.9%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:33%"></div><span class="q-val">7.0%</span></div>
+    </div></div>
+
+  <div class="q-row"><div class="q-name">新設法人数<small>人口あたり、2019〜24年</small></div>
+    <div class="q-cells">
+      <div class="q-cell"><div class="q-fill" style="width:56%"></div><span class="q-val">11.8%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:60%"></div><span class="q-val">12.7%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:51%"></div><span class="q-val">10.7%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:55%"></div><span class="q-val">11.5%</span></div>
+      <div class="q-cell"><div class="q-fill" style="width:60%"></div><span class="q-val">12.6%</span></div>
+    </div></div>
+
+  <p class="q-legend">濃いバーは各指標で最も掲載率が高いグループ。全国平均は11.5%。過疎地域指定については、掲載群の63.7%が指定を受けており、非掲載群の51.6%を上回ります（χ²検定 p=0.002）。</p>
+</div>
+
+<div class="twist"><span class="lbl">当初仮説の帰結</span>
+  <p>「個人が集まった結果」を測る指標、つまり転入超過と新設法人では差が出ませんでした。新設法人はどのグループも11〜13%で完全に平坦です。むしろ人が増えている自治体ほど載りません。</p>
+  <p>載っているのは「人が来ている自治体」ではなく、「空き家と過疎という課題が見え、協力隊という制度で外から人が入り、泊まれる場所があり、首都圏から日帰りできない距離にある」自治体でした。</p>
+</div>
+
+<p>もう一つ重要な結果があります。<strong>何回載ったか（掲載回数）は、9指標のどれとも相関しません</strong>（順位相関はすべて0.11未満）。4節で並べた常連8自治体が繰り返し載る理由は、統計的性質では説明できません。</p>
+
+<h2><span class="num">6 / 多変量</span>結局どれが独立に効いているのか</h2>
+<p>前節の各指標は互いに相関しています。空き家率が高い自治体は過疎指定を受けやすく、協力隊も多い。単独で見ると全部効いているように見えても、実際に独立して効いているのは一部だけかもしれません。そこで9指標を同時に入れたロジスティック回帰（目的変数＝掲載の有無）を行いました。</p>
+<div class="tbl"><table>
+<thead><tr><th>変数</th><th class="n">オッズ比</th><th class="n">95%信頼区間</th><th class="n">p値</th><th>判定</th></tr></thead>
+<tbody>
+<tr><td><strong>人口規模（対数）</strong></td><td class="n hi">2.57</td><td class="n">1.96 – 3.38</td><td class="n">&lt;0.001</td><td>独立に効く</td></tr>
+<tr><td><strong>協力隊 隊員数（対数）</strong></td><td class="n hi">1.97</td><td class="n">1.63 – 2.39</td><td class="n">&lt;0.001</td><td>独立に効く</td></tr>
+<tr><td>三大都市圏からの距離</td><td class="n lo">0.73</td><td class="n">0.58 – 0.90</td><td class="n">0.004</td><td>遠いほど載りにくい</td></tr>
+<tr><td>ふるさと納税（1人あたり）</td><td class="n">1.23</td><td class="n">1.00 – 1.52</td><td class="n">0.053</td><td>判定保留</td></tr>
+<tr><td>財政力指数</td><td class="n">0.71</td><td class="n">0.48 – 1.05</td><td class="n">0.083</td><td>判定保留</td></tr>
+<tr><td>過疎地域指定</td><td class="n">1.32</td><td class="n">0.83 – 2.09</td><td class="n">0.238</td><td>独立には効かない</td></tr>
+<tr><td>転入超過率</td><td class="n">1.16</td><td class="n">0.90 – 1.50</td><td class="n">0.255</td><td>独立には効かない</td></tr>
+<tr><td>宿泊・飲食業の集積</td><td class="n">1.06</td><td class="n">0.87 – 1.30</td><td class="n">0.567</td><td>独立には効かない</td></tr>
+</tbody></table></div>
+<p class="cap">n=1,701（掲載196件）、McFadden擬似R²=0.130。オッズ比は各変数が1標準偏差増えたときに掲載オッズが何倍になるかを示します。多重共線性は問題ない水準です（VIFはすべて3.4以下）。</p>
+
+<p>空き家率は調査対象外の町村があるため、取得できた1,030自治体に限定した第2のモデルで別に確認しました。結果は<strong>空き家率のオッズ比1.17（p=0.20）で、独立には効きません</strong>。このモデルでも人口規模（2.35）と協力隊数（1.95）は変わらず有意で、加えて財政力指数が0.51（p=0.003）と有意になりました。財政力が低いほど載りやすいという意味です。</p>
+
+<div class="note"><span class="lbl">この節の結論</span>
+  <p>単独で見たときに最も強く見えた空き家率と過疎指定は、<strong>人口規模と協力隊数を統制すると効果が消えます</strong>。空き家が多いから載るのではなく、空き家が多い自治体が協力隊を多く入れており、載るのはその経路を通じてでした。</p>
+  <p>頑健に残ったのは2つだけです。<strong>地方の中での人口規模の大きさ</strong>と、<strong>協力隊という制度に乗っている度合い</strong>。オッズ比の目安として、協力隊が0人の自治体と中央値2人の自治体では掲載オッズが約2倍違います。</p>
+  <p>ただし擬似R²は0.13で、掲載の有無のばらつきの大半はこれらの変数では説明できていません。残りは編集部の取材ルートや自治体との取引関係にあると考えられます。</p>
+</div>
+
+<h2><span class="num">7 / 検証</span>広告で載っているのではないか</h2>
+<p>協力隊数が効くという結果は、「外向きのPR予算がある自治体が載っている」とも読めます。前提で触れた通り、TURNSは取材タイアップ記事を販売しています。そこで目次の構造を確かめました。</p>
 <ul>
   <li>目次は「特集」枠と、「地域ルポ」「体験ツアーレポート」「TURNS LOCAL COLLEGE レポート」「協力隊レポート」などの枠に分かれます。後者はTURNSが自治体から受託した事業の報告です。</li>
   <li>公式サイトでは「地域ルポ」記事にPRタグが付いています（例: 新潟県三条市の地域ルポ）。PRタグの記事50件はすべて自治体の体験ツアー、移住相談会、協力隊募集、補助金告知でした。</li>
 </ul>
 <div class="tbl"><table>
-<thead><tr><th>枠</th><th class="n">自治体数</th><th>協力隊0人での掲載率</th><th>協力隊15人以上での掲載率</th></tr></thead>
+<thead><tr><th>枠</th><th class="n">自治体数</th><th class="n">協力隊0人での掲載率</th><th class="n">協力隊15人以上での掲載率</th></tr></thead>
 <tbody>
-<tr><td>特集枠のみに登場</td><td class="n">155</td><td>4.7%</td><td>16.5%（3.5倍）</td></tr>
-<tr><td>受託事業の報告枠に登場</td><td class="n">51</td><td>1.0%</td><td>10.1%（10倍）</td></tr>
+<tr><td>特集枠のみに登場</td><td class="n">155</td><td class="n">4.7%</td><td class="n">16.5%（3.5倍）</td></tr>
+<tr><td>受託事業の報告枠に登場</td><td class="n">51</td><td class="n">1.0%</td><td class="n">10.1%（10倍）</td></tr>
 </tbody></table></div>
-<p class="cap">複数回掲載の上位8自治体のうち、丹波山村は3回すべて、大熊町は4回中3回、津山市・十日町市は過半が報告枠。</p>
+<p class="cap">常連8自治体のうち、丹波山村は3回すべて、大熊町は4回中3回、津山市・十日町市は過半が報告枠です。</p>
 <p><strong>判定。</strong>掲載自治体の約4分の1と、繰り返し載る自治体の大半は、自治体がTURNSに仕事を出した結果として載っています。ただし報告枠を除いた特集枠だけでも協力隊数の傾きは残ります（3.5倍）。「全部広告」ではありません。特集記事の主人公は移住者個人で、その多くが協力隊経由で入ってきた人、というのが最も素直な読みです。特集枠にタイアップが混ざっているかは目次では判別できず、誌面のPR表記を実物で数える必要があります。</p>
 
 <div class="note"><span class="lbl">寄り道: なぜ協力隊が効くのか</span><p>協力隊は隊員1人あたり年520万円まで国が特別交付税で措置し、募集経費も年350万円まで措置されます。自治体の持ち出しはほぼゼロで、国の目標は「2026年度に隊員1万人」という頭数です。定住率（任期終了者の70.3%、県によっては55%）には目標がなく、市町村別の値は公表されていません。募集広告と隊員の物語が同じ媒体に載るのは、同じ予算枠から同じ業者に流れているためです。</p></div>
 
-<h2><span class="num">6 / 考察</span>掲載自治体の5つの型</h2>
-<p>201自治体を人口規模、過疎指定、都市圏からの距離で分けると、次の5型になります。</p>
+<h2><span class="num">8 / 考察</span>掲載自治体の5つの型</h2>
+<p>回帰で効いた2変数（人口規模と協力隊）を軸に、過疎指定と距離を加えて201自治体を分けると、次の5型になります。</p>
 <div class="tbl"><table>
 <thead><tr><th>型</th><th class="n">件数</th><th class="n">人口中央値</th><th class="n">協力隊</th><th class="n">空き家率</th><th class="n">距離</th><th>例</th></tr></thead>
 <tbody>
@@ -150,7 +290,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 <p class="cap">距離は三大都市圏の駅への直線距離の中央値。空き家率は住宅・土地統計調査の対象自治体のみ。</p>
 
 <h3>中核像</h3>
-<p><strong>過疎指定を受けた人口3〜10万人の地方都市</strong>が全体の43%を占め、複数回掲載の半分以上もここです。首都圏から200km前後、協力隊を数人抱え、空き家率2割、人口は年0.5%減。都市部の読者が「行っても暮らせる」と思える最小の都市規模で、かつ「課題があるから自分の出番がある」と感じられる場所です。</p>
+<p><strong>過疎指定を受けた人口3〜10万人の地方都市</strong>が全体の43%を占め、複数回掲載の半分以上もここです。首都圏から200km前後、協力隊を数人抱え、空き家率2割、人口は年0.5%減。都市部の読者が「行っても暮らせる」と思える最小の都市規模で、かつ「課題があるから自分の出番がある」と感じられる場所です。回帰の結果はこの像と整合します。人口規模が効くのは「小さすぎる村では記事が成立しない」ためで、協力隊が効くのは「記事の主人公を供給する制度だから」と読めます。</p>
 
 <h3>周辺の4型</h3>
 <ul>
@@ -167,17 +307,18 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   <li>宿泊・飲食が最も少ない層は2.4%。取材する側にも読者にも、行き場がありません。</li>
 </ul>
 
-<p class="thesis">TURNSに載るのは、盛り上がっている場所ではなく、盛り上げる余地と受け皿がある場所です。衰退しているが都市機能はまだあり、外の人間が入る制度と泊まれる場所があり、首都圏から日帰りできない距離にある地方都市。そして自治体がTURNSと取引関係にあるほど、繰り返し載ります。</p>
+<p class="thesis">TURNSに載るのは、盛り上がっている場所ではありません。地方の中では相応の人口規模があり、協力隊という国の制度に乗って外から人を受け入れている自治体です。空き家や過疎という課題の深さそのものは、独立には効いていませんでした。そして自治体がTURNSと取引関係にあるほど、繰り返し載ります。</p>
 
-<h2><span class="num">7 / 限界</span>この分析で言えないこと</h2>
+<h2><span class="num">9 / 限界</span>この分析で言えないこと</h2>
 <ul>
   <li>目次の見出しに都道府県名付きで出た自治体だけを数えています。本文中の登場や地域名表記は漏れています。</li>
-  <li>相関のみで、多変量の切り分けはしていません。協力隊数・空き家率・過疎指定は互いに相関するので、どれが独立に効くかは未確定です。</li>
+  <li>回帰は掲載の「有無」を説明するもので、擬似R²は0.13です。ばらつきの大半は未説明のままで、掲載「回数」に至ってはどの変数とも相関しません。</li>
+  <li>空き家率のモデルは調査対象の1,030自治体に限られ、人口1.5万人未満の町村を含みません。小規模町村での空き家率の効果は検証できていません。</li>
   <li>特集枠の記事が編集記事かタイアップかは目次から判別できません。</li>
+  <li>因果は特定していません。協力隊が多いから載るのか、載る自治体が協力隊にも積極的なのか、両方が第三の要因（自治体の姿勢）の結果なのかは、この分析では区別できません。</li>
   <li>人口は2020年、他の指標は2021〜2025年で、年次がずれています。</li>
-  <li>「魅力」そのものは観測できません。取れるのは結果の痕跡だけで、掲載自体が痕跡の一部でもあります。</li>
 </ul>
-<p>次にやるなら、直近2〜3号の誌面で記事ごとにPR表記を確認して編集記事だけで再集計すること、そして協力隊数・空き家率・過疎指定・人口・距離を同時に入れた回帰で独立効果を見ることです。</p>
+<p>次にやるなら、直近2〜3号の誌面で記事ごとにPR表記を確認して編集記事だけで再集計することです。それができれば、協力隊の効果が編集判断によるものか営業関係によるものかを分離できます。</p>
 
 <footer>
   主な出典
