@@ -72,6 +72,9 @@ td.lo{color:var(--warn);font-weight:700;}
 
 /* 核心の3数値 */
 .keyfig{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:18px 0 8px;}
+.keyfig.four{grid-template-columns:repeat(4,1fr);gap:14px;}
+@media (max-width:760px){.keyfig.four{grid-template-columns:repeat(2,1fr);gap:16px}}
+@media (max-width:460px){.keyfig.four{grid-template-columns:1fr}}
 .kf{border-top:2px solid var(--warn);padding-top:10px;}
 .kf.up{border-top-color:var(--accent);}
 .kf .kf-q{display:block;font-size:12.5px;font-weight:700;line-height:1.5;color:var(--ink);min-height:3em;}
@@ -254,26 +257,31 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
 <h3>ここが一番おもしろいところ</h3>
 <div class="twist"><span class="lbl">人が増えている自治体ほど、掲載率が低い</span>
-  <p>「魅力があるから人が集まる」なら、人が集まった痕跡が統計に出るはずです。実際に測ってみると、逆でした。以下の3つの数字は<strong>いずれも「その条件に当てはまる自治体のうち、4年間でTURNSに1回以上載ったものの割合」</strong>です。全国平均は11.5%です。</p>
-  <div class="keyfig">
-    <div class="kf">
-      <span class="kf-q">人口が実際に増えている自治体<em>転入超過 +2‰以上／294件</em></span>
-      <b>8.8%</b>
-      <span class="kf-l">がTURNSに載りました。全国平均11.5%を<strong>下回ります</strong>。人を呼べている自治体ほど、移住雑誌に登場しません。</span>
-    </div>
-    <div class="kf">
-      <span class="kf-q">起業が活発な自治体<em>新設法人が人口1万人あたり55件以上／209件</em></span>
-      <b>14.4%</b>
-      <span class="kf-l">がTURNSに載りました。ところが起業が最も少ない453自治体でも11.7%で、<strong>ほとんど変わりません</strong>。起業の多さは掲載を分けていません。</span>
+  <p>「魅力があるから人が集まる」なら、人が集まった痕跡が統計に出るはずです。実際に測ると逆でした。<strong>転入超過が+2‰以上、つまり実際に人口が増えている294自治体の掲載率は8.8%</strong>で、全国平均11.5%を下回ります。人口1万人あたり新設法人が55件以上の209自治体でも14.4%、最も少ない453自治体でも11.7%と、<strong>起業の多さは掲載を分けていません</strong>。</p>
+  <p>載っているのは「人が来ている自治体」ではなく、<strong>「空き家と過疎という課題が見え、協力隊という制度で外から人が入り、泊まれる場所があり、首都圏から日帰りできない距離にある」</strong>自治体でした。その4つの条件それぞれの数字が次です。いずれも「その条件に当てはまる自治体のうち、4年間でTURNSに1回以上載ったものの割合」で、全国平均は11.5%です。</p>
+  <div class="keyfig four">
+    <div class="kf up">
+      <span class="kf-q">空き家と過疎という課題が見える<em>空き家率20%以上／210件</em></span>
+      <b>21.9%</b>
+      <span class="kf-l">空き家率10%未満の183自治体では5.5%。過疎地域指定でも、掲載群の63.7%が指定を受けており非掲載群の51.6%を上回ります。</span>
     </div>
     <div class="kf up">
-      <span class="kf-q">協力隊を多く抱える自治体<em>隊員15人以上／109件</em></span>
+      <span class="kf-q">協力隊という制度で外から人が入る<em>隊員15人以上／109件</em></span>
       <b>26.6%</b>
-      <span class="kf-l">がTURNSに載りました。隊員0人の618自治体では5.7%なので、<strong>4.7倍の開き</strong>があります。9指標で最大の差です。</span>
+      <span class="kf-l">隊員0人の618自治体では5.7%。4.7倍の開きで、9指標のなかで最大の差です。</span>
+    </div>
+    <div class="kf">
+      <span class="kf-q">泊まれる場所がない自治体は載らない<em>宿泊・飲食が人口1万人あたり25未満／389件</em></span>
+      <b>2.8%</b>
+      <span class="kf-l">9指標のどの区分よりも低い数字です。取材する側にも読者にも行き場がない自治体は、まず登場しません。</span>
+    </div>
+    <div class="kf up">
+      <span class="kf-q">首都圏から日帰りできない距離<em>三大都市圏から200〜400km／254件</em></span>
+      <b>18.9%</b>
+      <span class="kf-l">50km未満の328自治体では5.8%。ただし400km以上になると9.7%まで落ちます。遠ければよいのではなく、中距離帯が最も高くなります。</span>
     </div>
   </div>
-  <p>この3つが示しているのは1点だけです。<strong>移住の成果を測る指標（人口が増えているか、起業が活発か）では掲載がほとんど分かれず、政策の運用量を測る指標（協力隊の隊員数）で大きく分かれる。</strong>5区分の端から端までで見ると、成果側の2指標は方向の定まらない6ポイント程度の上下にとどまるのに対し、協力隊は5.7%から26.6%へ、20.9ポイントを単調に上がります。</p>
-  <p>上のグラフでは空き家率、距離、財政力なども傾きを持っていました。ただしそれらが協力隊や人口規模と別に効いているのかは、この3つの数字からは分かりません。次節で確かめます。</p>
+  <p>この4条件が同時に当てはまる自治体は、萩市・十日町市・津山市・田辺市・薩摩川内市のような、過疎指定を受けた人口数万人の地方都市です。<strong>ただし4つが別々に効いているとは限りません。</strong>空き家が多い自治体は過疎指定も受けやすく協力隊も多いので、どれが本当に効いているのかは次節で切り分けます。</p>
 </div>
 
 <div class="note"><span class="lbl">ここで言えること、言えないこと</span>
