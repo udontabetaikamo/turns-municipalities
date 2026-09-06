@@ -71,12 +71,14 @@ td.lo{color:var(--warn);font-weight:700;}
 }
 
 /* 核心の3数値 */
-.keyfig{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0 6px;}
+.keyfig{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:18px 0 8px;}
 .kf{border-top:2px solid var(--warn);padding-top:10px;}
 .kf.up{border-top-color:var(--accent);}
-.kf b{display:block;font-size:26px;line-height:1.2;font-variant-numeric:tabular-nums;font-weight:700;}
-.kf .kf-l{font-size:12px;color:var(--ink-2);line-height:1.5;display:block;margin-top:4px;}
-@media (max-width:560px){.keyfig{grid-template-columns:1fr;gap:10px}}
+.kf .kf-q{display:block;font-size:12.5px;font-weight:700;line-height:1.5;color:var(--ink);min-height:3em;}
+.kf .kf-q em{display:block;font-style:normal;font-weight:400;color:var(--ink-3);font-size:11.5px;font-variant-numeric:tabular-nums;}
+.kf b{display:block;font-size:30px;line-height:1.15;font-variant-numeric:tabular-nums;font-weight:700;margin:8px 0 2px;}
+.kf .kf-l{font-size:12px;color:var(--ink-2);line-height:1.6;display:block;}
+@media (max-width:560px){.keyfig{grid-template-columns:1fr;gap:14px}.kf .kf-q{min-height:0}}
 
 .thesis{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:19px;line-height:1.75;margin:22px 0;padding:0 0 0 18px;border-left:2px solid var(--ink);max-width:36em;}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:14px;margin:12px 0 18px;max-width:40em;}
@@ -252,13 +254,25 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
 <h3>ここが一番おもしろいところ</h3>
 <div class="twist"><span class="lbl">移住が成功している自治体ほど、移住雑誌に載らない</span>
-  <p>「魅力があるから人が集まる」なら、人が集まった痕跡が統計に出るはずです。実際に測ってみると、逆でした。</p>
+  <p>「魅力があるから人が集まる」なら、人が集まった痕跡が統計に出るはずです。実際に測ってみると、逆でした。以下の3つの数字は<strong>いずれも「その条件に当てはまる自治体のうち、4年間でTURNSに1回以上載ったものの割合」</strong>です。全国平均は11.5%です。</p>
   <div class="keyfig">
-    <div class="kf"><b>8.8%</b><span class="kf-l">転入超過が +2‰ 以上、つまり<strong>実際に人が増えている</strong>294自治体の掲載率。全国平均11.5%を下回ります。</span></div>
-    <div class="kf"><b>差なし</b><span class="kf-l">新設法人数は8.1〜14.4%を上下するだけで、<strong>起業が多い自治体が載りやすいわけではありません</strong>。</span></div>
-    <div class="kf up"><b>26.6%</b><span class="kf-l">一方、<strong>協力隊が15人以上</strong>いる109自治体の掲載率。隊員0人の自治体（5.7%）の4.7倍です。</span></div>
+    <div class="kf">
+      <span class="kf-q">人口が実際に増えている自治体<em>転入超過 +2‰以上／294件</em></span>
+      <b>8.8%</b>
+      <span class="kf-l">がTURNSに載りました。全国平均11.5%を<strong>下回ります</strong>。人を呼べている自治体ほど、移住雑誌に登場しません。</span>
+    </div>
+    <div class="kf">
+      <span class="kf-q">起業が活発な自治体<em>新設法人が人口1万人あたり55件以上／209件</em></span>
+      <b>14.4%</b>
+      <span class="kf-l">がTURNSに載りました。ところが起業が最も少ない453自治体でも11.7%で、<strong>ほとんど変わりません</strong>。起業の多さは掲載を分けていません。</span>
+    </div>
+    <div class="kf up">
+      <span class="kf-q">協力隊を多く抱える自治体<em>隊員15人以上／109件</em></span>
+      <b>26.6%</b>
+      <span class="kf-l">がTURNSに載りました。隊員0人の618自治体では5.7%なので、<strong>4.7倍の開き</strong>があります。9指標で最大の差です。</span>
+    </div>
   </div>
-  <p>載っているのは「人が来ている自治体」ではなく、「空き家と過疎という課題が見え、協力隊という制度で外から人が入り、泊まれる場所があり、首都圏から日帰りできない距離にある」自治体でした。<strong>移住メディアの誌面は、移住の成果ではなく、移住政策の運用状況を映している</strong>と言えます。</p>
+  <p>載っているのは「人が来ている自治体」ではなく、「空き家と過疎という課題が見え、協力隊という制度で外から人が入り、泊まれる場所があり、首都圏から日帰りできない距離にある」自治体でした。<strong>移住メディアの誌面は、移住の成果ではなく、移住政策の運用状況を映している</strong>と言えます。この4つの条件のうちどれが独立に効いているのかは、次節で絞り込みます。</p>
 </div>
 
 <p>もう一つ重要な結果があります。<strong>何回載ったか（掲載回数）は、9指標のどれとも相関しません</strong>（順位相関はすべて0.11未満）。4節で並べた常連8自治体が繰り返し載る理由は、統計的性質では説明できません。</p>
