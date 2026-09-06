@@ -83,6 +83,19 @@ td.lo{color:var(--warn);font-weight:700;}
 .kf .kf-l{font-size:12px;color:var(--ink-2);line-height:1.6;display:block;}
 @media (max-width:560px){.keyfig{grid-template-columns:1fr;gap:14px}.kf .kf-q{min-height:0}}
 
+/* 総括 */
+.summary{margin:0 0 8px;}
+.summary h2.sum-h{font-size:20px;margin:0 0 4px;padding:0;border:0;}
+.summary .sum-sub{font-size:13px;color:var(--ink-3);margin:0 0 18px;}
+.sum-row{display:grid;grid-template-columns:8.5em 1fr;gap:4px 18px;padding:11px 0;border-top:1px solid var(--rule);}
+.sum-row:last-of-type{border-bottom:1px solid var(--rule);}
+.sum-k{font-size:12px;color:var(--accent);font-weight:500;letter-spacing:.04em;padding-top:2px;}
+.sum-k a{text-decoration:none;color:inherit;}
+.sum-k a:hover{text-decoration:underline;}
+.sum-v{font-size:14.5px;line-height:1.7;max-width:38em;}
+.sum-v em{font-style:normal;color:var(--ink-3);font-size:12.5px;display:block;margin-top:1px;}
+@media (max-width:600px){.sum-row{grid-template-columns:1fr;gap:2px}}
+
 .thesis{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;font-size:19px;line-height:1.75;margin:22px 0;padding:0 0 0 18px;border-left:2px solid var(--ink);max-width:36em;}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:14px;margin:12px 0 18px;max-width:40em;}
 .kv dt{color:var(--ink-3);white-space:nowrap;} .kv dd{margin:0;}
@@ -116,12 +129,27 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   <div class="meta"><span>対象: 2022年6月号〜2026年11月号（23号）</span><span>作成: 川北大洋</span></div>
 </header>
 
-<h2><span class="num">1 / 動機</span>なぜ雑誌の目次を数えたのか</h2>
+<section class="summary">
+  <h2 class="sum-h">この記事の結論</h2>
+  <p class="sum-sub">各章の要点だけを並べています。ここだけ読んでも全体が分かるようにしました。</p>
+  <div class="sum-row"><div class="sum-k"><a href="#s1">1 / 動機</a></div><div class="sum-v">協力隊の文脈でよく聞く自治体が誌面に並んでいる、という印象を統計で確かめたくなった。<em>出発点の仮説は「盛り上がっている自治体が載る」。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s2">2 / 前提</a></div><div class="sum-v">TURNSは移住専門の季刊誌だが、自治体にタイアップ記事や協力隊募集支援も売っている。<em>「載る」＝「編集部が選んだ」とは限らない。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s3">3 / 方法</a></div><div class="sum-v">23号の目次から掲載201自治体を抽出し、全国1,741市区町村と公的統計9本で照合した。<em>母集団の掲載率は11.5%。以降の数字はすべてこれと比べる。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s4">4 / 分布</a></div><div class="sum-v">201自治体のうち166件（83%）は1回きり。4回が3件、3回が5件。<em>常連は秋田市、十日町市、大熊町など8自治体。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s5">5 / 結果</a></div><div class="sum-v">人口が増えている自治体は8.8%で平均以下、起業の多さでは差が出ない。協力隊は5.7%から26.6%へ単調に上がる。<em>成果では分かれず、政策の運用量で分かれる。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s6">6 / 多変量</a></div><div class="sum-v">9指標を同時に入れると、関連が残るのは人口規模と協力隊数だけ。<em>空き家率と過疎指定は、統制すると関連が消える。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s7">7 / 検証</a></div><div class="sum-v">協力隊の効果はPR表記のない特集枠にも残るが、PR枠のほうが強い。<em>編集記事は財政力が低い自治体、PR枠は高い自治体を選ぶ。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s8">8 / 考察</a></div><div class="sum-v">中核は過疎指定を受けた人口3〜10万人の地方都市。全体の43%を占める。<em>大都市、小町村、復興地、首都圏近郊はそれぞれ別の役割。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s9">9 / 反論</a></div><div class="sum-v">第三の要因、記事にしやすさ、時間の前後関係。3つとも否定できていない。<em>何が観測されればこの読みが崩れるかを明示した。</em></div></div>
+  <div class="sum-row"><div class="sum-k"><a href="#s10">10 / 限界</a></div><div class="sum-v">原因と結果の順序は判定できず、「移住の成果」の代理指標も粗い。<em>分析対象は移住政策ではなく、メディアの選択過程。</em></div></div>
+</section>
+
+<h2 id="s1"><span class="num">1 / 動機</span>なぜ雑誌の目次を数えたのか</h2>
 <p>TURNSを最初に読んだとき、<strong>地域おこし協力隊の文脈でよく耳にする市区町村が、そのまま誌面に並んでいる</strong>と強く感じました。海士町、西粟倉村、東川町、丹波山村。移住や地域づくりの話題で名前が出る自治体は、いつも同じ顔ぶれに見えます。</p>
 <p>その印象が本当なのか、それとも自分が同じ情報源ばかり見ているだけなのかを確かめたくなりました。もし本当に偏りがあるなら、それは何によって決まっているのか。人口か、空き家か、財政か、東京からの距離か。目次には自治体名が書かれているので、数えれば統計で扱えます。</p>
 <p>最初の仮説は単純でした。<strong>「盛り上がっていて、個人プレイヤーが集まる魅力のある自治体が載っているのだろう」</strong>。もしそうなら、掲載自治体は人口移動や起業の統計で他と区別できるはずです。</p>
 
-<h2><span class="num">2 / 前提</span>TURNSとはどんな媒体か</h2>
+<h2 id="s2"><span class="num">2 / 前提</span>TURNSとはどんな媒体か</h2>
 <dl class="kv">
   <dt>発行</dt><dd>第一プログレス（東京・有楽町）。2012年創刊、季刊、公称8万部</dd>
   <dt>主題</dt><dd>移住・二拠点・地域での起業・地域おこし協力隊。毎号1つの特集（例: 事業承継、復興、一次産業、民間行政）</dd>
@@ -129,7 +157,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 </dl>
 <div class="note"><span class="lbl">読む前に押さえる点</span><p>TURNSは自治体から仕事を受ける会社でもあります。「載っている」ことは「編集部が選んだ」とは限りません。この点は7節で検証します。</p></div>
 
-<h2><span class="num">3 / 方法</span>目次を取り、統計と結合する</h2>
+<h2 id="s3"><span class="num">3 / 方法</span>目次を取り、統計と結合する</h2>
 <ol>
   <li>雑誌販売サイト（Fujisan）に各号の目次全文があるので、97号分を取得。目次全文が載るのは2022年6月号以降なので、分析はその23号に限定しました。</li>
   <li>目次の見出しから「都道府県名＋市区町村名」を正規表現で抽出。206件、重複を除くと201自治体です。都道府県名を伴わない表記や「能登」「隠岐」のような地域名は拾えていません。</li>
@@ -150,7 +178,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 </tbody></table></div>
 <p class="cap">名寄せで合併により消滅した旧町村名など6件を除外または広域自治体で代用しています。政令指定都市の区は市に集約しました。</p>
 
-<h2><span class="num">4 / 分布</span>どの自治体が何回載ったか</h2>
+<h2 id="s4"><span class="num">4 / 分布</span>どの自治体が何回載ったか</h2>
 <p>4年間23号で201自治体が登場しました。<strong>そのうち166自治体（83%）は1回だけ</strong>で、繰り返し登場するのはごく少数です。</p>
 <div class="tbl"><table>
 <thead><tr><th class="n">掲載号数</th><th class="n">自治体数</th><th>自治体名</th></tr></thead>
@@ -163,7 +191,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 <p class="cap">同一号内で複数の記事に登場しても1回と数えています。</p>
 <p>この「常連」の顔ぶれが、冒頭の印象そのものでした。ここから先は、彼らが何によって選ばれているのかを見ます。</p>
 
-<h2><span class="num">5 / 結果</span>掲載を分けた指標、分けなかった指標</h2>
+<h2 id="s5"><span class="num">5 / 結果</span>掲載を分けた指標、分けなかった指標</h2>
 <p>指標ごとに全国1,741自治体を実際の値で5つの区分に分け、それぞれの区分の中でTURNSに載った自治体が何％を占めるかを比べます。区分は百分位ではなく、意味の取りやすい実数で切りました（例: 協力隊なら0人／1〜2人／3〜6人／7〜14人／15人以上）。区分ごとの自治体数は異なります。</p>
 <div class="note"><span class="lbl">グラフの読み方</span>
   <p>各バーの中の縦線が全国平均11.5%です。バーが縦線より長ければ「その区分は載りやすい」、短ければ「載りにくい」ことを意味します。</p>
@@ -291,7 +319,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
 <p>もう一つ重要な結果があります。<strong>何回載ったか（掲載回数）は、9指標のどれとも相関しません</strong>（順位相関はすべて0.11未満）。4節で並べた常連8自治体が繰り返し載る理由は、統計的性質では説明できません。</p>
 
-<h2><span class="num">6 / 多変量</span>結局どれが掲載と結びついているのか</h2>
+<h2 id="s6"><span class="num">6 / 多変量</span>結局どれが掲載と結びついているのか</h2>
 <p>前節の各指標は互いに相関しています。空き家率が高い自治体は過疎指定を受けやすく、協力隊も多い。単独で見ると全部効いているように見えても、実際に独立して効いているのは一部だけかもしれません。そこで9指標を同時に入れたロジスティック回帰（目的変数＝掲載の有無）を行い、他の変数を条件づけても関連が残るのはどれかを見ました。</p>
 <div class="tbl"><table>
 <thead><tr><th>変数</th><th class="n">オッズ比</th><th class="n">95%信頼区間</th><th class="n">p値</th><th>判定</th></tr></thead>
@@ -315,7 +343,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   <p>言葉の使い方について一点。ここでの「関連が残る」は、<strong>モデルに入れた他の変数を条件づけても掲載との統計的な結びつきが観察された</strong>という意味です。その変数が掲載を生んでいるという因果の主張ではありません。擬似R²は0.13で、掲載の有無のばらつきの大半はこれらの変数では説明できていません。</p>
 </div>
 
-<h2><span class="num">7 / 検証</span>広告で載っているのではないか</h2>
+<h2 id="s7"><span class="num">7 / 検証</span>広告で載っているのではないか</h2>
 <p>TURNSは自治体にタイアップ記事を売っています。目次を見ると、掲載は「特集」枠と、「地域ルポ」「体験ツアーレポート」「協力隊レポート」などの<strong>受託事業の報告枠</strong>に分かれます。<strong>PRにあたるのは後者</strong>で、公式サイトでもこの種の記事にPRタグが付いています。掲載201自治体のうち特集枠だけが150件、報告枠に出るのが50件です。</p>
 <p>協力隊の効果が広告だけの産物かを見るため、枠ごとに別々の回帰を行いました。</p>
 
@@ -337,7 +365,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
 <p class="cap">常連8自治体のうち、丹波山村は3回すべて、大熊町は4回中3回、津山市・十日町市は過半が報告枠です。なお特集枠にPR表記がないことは、タイアップが含まれていない証明にはなりません。誌面の実物を確認しない限り完全には分離できません。</p>
 
-<h2><span class="num">8 / 考察</span>掲載自治体の5つの型</h2>
+<h2 id="s8"><span class="num">8 / 考察</span>掲載自治体の5つの型</h2>
 <p>回帰で効いた2変数（人口規模と協力隊）を軸に、過疎指定と距離を加えて201自治体を分けると、次の5型になります。</p>
 <div class="tbl"><table>
 <thead><tr><th>型</th><th class="n">件数</th><th class="n">人口中央値</th><th class="n">協力隊</th><th class="n">空き家率</th><th class="n">距離</th><th>例</th></tr></thead>
@@ -371,7 +399,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
 <p class="thesis">TURNSに載るのは、盛り上がっている場所ではありません。地方の中では相応の人口規模があり、協力隊という国の制度に乗って外から人を受け入れている自治体です。誌面に映っているのは移住の成果というより、移住政策の運用と、それを外に発信する動きだと考えられます。</p>
 
-<h2><span class="num">9 / 反論</span>この読みを崩しうる説明</h2>
+<h2 id="s9"><span class="num">9 / 反論</span>この読みを崩しうる説明</h2>
 <p>ここまでの読みは1つの解釈にすぎません。同じデータから、次の3つの対立する説明が立てられます。どれも現時点では否定できていません。</p>
 
 <h3>反論1: 因果が逆で、第三の要因が両方を生んでいる</h3>
@@ -393,7 +421,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   </ul>
 </div>
 
-<h2><span class="num">10 / 限界</span>この分析で言えないこと</h2>
+<h2 id="s10"><span class="num">10 / 限界</span>この分析で言えないこと</h2>
 <ul>
   <li><strong>時間の前後関係が担保されていません。</strong>協力隊数は2024年度、転入超過は2024年、人口は2020年、掲載は2022〜2026年です。原因と結果のどちらが先かを、この設計では判定できません。</li>
   <li><strong>「移住の成果」を転入超過と新設法人で代理しています。</strong>どちらも移住施策以外の要因を多く含み、施策経由の移住者数そのものではありません。より適切な指標（移住相談件数、施策経由の移住者数、協力隊の定住率）は市区町村別に公表されていません。</li>
